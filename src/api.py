@@ -5,36 +5,48 @@ from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
 class API: 
-    def __init__(self):
+    def __init__(self, useName, passWord):
         self.browser = mechanicalsoup.StatefulBrowser()
         self.browser.open("https://www.howthemarketworks.com", verify = False)
         self.userLogin = False;
+        self.useName = useName
+        self.passWord = passWord
 
 
-    def login(self, usename, password):
-        try:
-            self.browser.follow_link("login")
-            self.browser.select_form('form[action="/login"]')
-            # self.browser.get_current_form().print_summary()
-            self.browser["UserName"] = usename
-            self.browser["Password"] = password
-            response = self.browser.submit_selected()
-            self.userLogin = True;
-        except mechanicalsoup.LinkNotFoundError:
-            print("log in failed")
-            self.userLogin = False; 
+    def login(self):
+        while(not self.userLogin):  
+            try:
+                self.browser.open("https://www.howthemarketworks.com/login")
+                self.browser.select_form('form[action="/login"]')
+                # self.browser.get_current_form().print_summary()
+                self.browser["UserName"] = self.useName
+                self.browser["Password"] = self.passWord
+                response = self.browser.submit_selected()
+                self.userLogin = True;
+            except mechanicalsoup.LinkNotFoundError:
+                print("log in failed")
+                self.userLogin = False; 
+
+    def marketStatus(self):
+        if(self.userLogin):
+            self.browser.open("https://www.howthemarketworks.com/trading/equities")
+            status = self.browser.get_current_page().find("p", class_="text-center" )
+            status = str(status.text).split('\n')[1].replace("...", "")
+            print(status)
+        else: 
+            print("you need to log in first")
+
+
 
     def trade(self, companyName, ammount):
         if(self.userLogin):
             self.browser.open("https://www.howthemarketworks.com/trading/equities")
             self.browser.select_form('form[action="/trading/placeorder"]')
-            self.browser.get_current_form().print_summary()
-            self.browser.launch_browser()
             self.browser["OrderSide"] = 1
             self.browser["OrderType"] = 1
             self.browser["Symbol"] = companyName
             self.browser["Quantity"] = ammount
-            self.browser.submit_selected()
+            # self.browser.submit_selected()
         else:
             print("you need to log in first")
        
@@ -43,21 +55,21 @@ class API:
         if(self.userLogin):
             self.browser.open("https://www.howthemarketworks.com/trading/equities")
             self.browser.select_form('form[action="/trading/placeorder"]')
-            print(browser.get_current_form().print_summary())
-            # self.browser.launch_browser()
             self.browser["OrderSide"] = 1
             self.browser["OrderType"] = 2
             self.browser["Symbol"] = companyName
-            self.browser["Quantity"] = amount
-            browser.get_current_form().print_summary()
-            self.browser.submit_selected()
+            self.browser["Price"] = amount
+            # self.browser.get_current_form().print_summary()
+            self.browser.launch_browser()
+            # self.browser.submit_selected()
         else:
             print("you need to log in first")
        
 
-test = API()
-test.login("justinphan3110", "justinphan3110")
-test.trade("FB",1)
+test = API("justinphan3110", "justinphan3110")
+test.login()
+test.marketStatus()
+# test.tradeWithLimit("FB",1)
 
 # browser.follow_link("https://www.howthemarketworks.com/trading/equities")
 
