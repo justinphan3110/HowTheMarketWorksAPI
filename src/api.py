@@ -4,17 +4,39 @@ import requests
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
 requests.packages.urllib3.disable_warnings(InsecureRequestWarning)
-browser = mechanicalsoup.StatefulBrowser()
-browser.open("https://www.howthemarketworks.com", verify = False)
-browser.follow_link("login")
+class API: 
+    def __init__(self):
+        self.browser = mechanicalsoup.StatefulBrowser()
+        self.browser.open("https://www.howthemarketworks.com", verify = False)
+        self.userLogin = False;
 
-try:
-    browser.select_form('form[action="/login"]')
-    browser["UserName"] = "justinphan3110"
-    browser["Password"] = "justinphan3110"
-    response = browser.submit_selected()
-except:
-    browser.launch_browser()
+
+    def login(self, usename, password):
+        try:
+            self.browser.follow_link("login")
+            self.browser.select_form('form[action="/login"]')
+            self.browser["UserName"] = usename
+            self.browser["Password"] = password
+            response = self.browser.submit_selected()
+            self.userLogin = True;
+        except mechanicalsoup.LinkNotFoundError:
+            self.userLogin = False; 
+
+    def trade(self, companyName, ammount):
+        if(self.userLogin){
+            self.browser.open("https://www.howthemarketworks.com")
+            self.browser.follow_link("/")
+            self.browser.launch_browser()
+        }
+       
+
+test = API()
+test.login("justinphan3110", "justinphan3110")
+test.trade("g",1)
+
+# browser.follow_link("https://www.howthemarketworks.com/trading/equities")
+
+
 
 
 # print(response.text)
