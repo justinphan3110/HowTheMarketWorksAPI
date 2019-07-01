@@ -28,10 +28,28 @@ class API:
         if(self.userLogin):
             self.browser.open("https://www.howthemarketworks.com/trading/equities")
             self.browser.select_form('form[action="/trading/placeorder"]')
-            # self.browser.launch_browser()
+            self.browser.get_current_form().print_summary()
+            self.browser.launch_browser()
             self.browser["OrderSide"] = 1
+            self.browser["OrderType"] = 1
             self.browser["Symbol"] = companyName
             self.browser["Quantity"] = ammount
+            self.browser.submit_selected()
+        else:
+            print("you need to log in first")
+       
+
+    def tradeWithLimit(self, companyName, amount):
+        if(self.userLogin):
+            self.browser.open("https://www.howthemarketworks.com/trading/equities")
+            self.browser.select_form('form[action="/trading/placeorder"]')
+            print(browser.get_current_form().print_summary())
+            # self.browser.launch_browser()
+            self.browser["OrderSide"] = 1
+            self.browser["OrderType"] = 2
+            self.browser["Symbol"] = companyName
+            self.browser["Quantity"] = amount
+            browser.get_current_form().print_summary()
             self.browser.submit_selected()
         else:
             print("you need to log in first")
