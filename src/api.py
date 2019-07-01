@@ -31,8 +31,11 @@ class API:
         if(self.userLogin):
             self.browser.open("https://www.howthemarketworks.com/trading/equities")
             status = self.browser.get_current_page().find("p", class_="text-center" )
-            status = str(status.text).split('\n')[1].replace("...", "")
-            print(status)
+            if(str(status.text) == "This contest has not started yet"):
+                print("Market is openning")
+            else: 
+                status = str(status.text).split('\n')[1].replace("...", "")
+                print(status)
         else: 
             print("you need to log in first")
 
