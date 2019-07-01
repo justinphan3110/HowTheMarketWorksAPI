@@ -15,24 +15,31 @@ class API:
         try:
             self.browser.follow_link("login")
             self.browser.select_form('form[action="/login"]')
+            # self.browser.get_current_form().print_summary()
             self.browser["UserName"] = usename
             self.browser["Password"] = password
             response = self.browser.submit_selected()
             self.userLogin = True;
         except mechanicalsoup.LinkNotFoundError:
+            print("log in failed")
             self.userLogin = False; 
 
     def trade(self, companyName, ammount):
-        if(self.userLogin){
-            self.browser.open("https://www.howthemarketworks.com")
-            self.browser.follow_link("/")
-            self.browser.launch_browser()
-        }
+        if(self.userLogin):
+            self.browser.open("https://www.howthemarketworks.com/trading/equities")
+            self.browser.select_form('form[action="/trading/placeorder"]')
+            # self.browser.launch_browser()
+            self.browser["OrderSide"] = 1
+            self.browser["Symbol"] = companyName
+            self.browser["Quantity"] = ammount
+            self.browser.submit_selected()
+        else:
+            print("you need to log in first")
        
 
 test = API()
 test.login("justinphan3110", "justinphan3110")
-test.trade("g",1)
+test.trade("FB",1)
 
 # browser.follow_link("https://www.howthemarketworks.com/trading/equities")
 
