@@ -49,7 +49,7 @@ class API:
             self.browser["OrderType"] = 1
             self.browser["Symbol"] = companyName
             self.browser["Quantity"] = ammount
-            # self.browser.submit_selected()
+            self.browser.submit_selected()
         else:
             print("you need to log in first")
        
@@ -63,8 +63,8 @@ class API:
             self.browser["Symbol"] = companyName
             self.browser["Price"] = amount
             # self.browser.get_current_form().print_summary()
-            self.browser.launch_browser()
-            # self.browser.submit_selected()
+            # self.browser.launch_browser()
+            self.browser.submit_selected()
         else:
             print("you need to log in first")
        
@@ -72,7 +72,7 @@ class API:
 test = API("justinphan3110", "justinphan3110")
 test.login()
 test.marketStatus()
-# test.tradeWithLimit("FB",1)
+test.trade("AMD", 200)
 
 # browser.follow_link("https://www.howthemarketworks.com/trading/equities")
 
