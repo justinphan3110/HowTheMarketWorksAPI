@@ -69,7 +69,7 @@ class API:
             print("you need to log in first")
        
 
-test = API("justinphan3110", "justinphan3110")
+test = API("justinphan3110", "123456")
 test.login()
 test.marketStatus()
 test.trade("AMD", 200)
