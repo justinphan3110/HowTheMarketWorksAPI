@@ -7,7 +7,7 @@ There will be 2 main section for this project: [Scrapy](#Scrapy) and [Main API](
 ## Scrapy
 This is the document to set up the Scrapy Spider to crawl stock data from [Yahoo Finance](https://finance.yahoo.com/). 
 There will be 2 set up environment Step: __Install and set up InfluxDB__  and __Install and Set up Scrapy__ 
-### Install and set up InfluxDB
+### :arrow_forward: Install and set up InfluxDB
 In this project, I will use [InfluxDB](https://www.influxdata.com/), an open source time series database
 
 Add InfluxData repository
@@ -25,7 +25,7 @@ Calling `influx` to check
     
 
 
-### Install and Set up Scrapy
+### :arrow_forward: Install and Set up Scrapy
     pip install scrapy 
     scrapy startproject stock
 
@@ -56,7 +56,7 @@ After getting the data of each companies succesfully, we can easily write it in 
 
 ![image](https://user-images.githubusercontent.com/44376091/62830902-de98de80-bc40-11e9-80ef-b1ad686600e3.png)
 
-### Run Scrapy with Crontab
+#### :arrow_forward: Run Scrapy with Crontab
 Now you can easily run scrapy with 
       
       scrapy crawl stock
@@ -69,7 +69,7 @@ The data will be written in my InfluxDB
 
 ![image](https://user-images.githubusercontent.com/44376091/62830978-08063a00-bc42-11e9-94bc-208639976d00.png)
 
-#### Using Crontab
+###### Using Crontab
 Now we can employ Crontab to get our scrapy spider run every 1 minute, which close to the time Yahoo Finance updates the stock value
 
     crontab -e
