@@ -87,3 +87,6 @@ Now the stock values will be update every 1min, after a while you can check the 
 
 
 # API
+
+# Author
+  [Long Phan](https://github.com/justinphan3110)
