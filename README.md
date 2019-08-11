@@ -33,7 +33,7 @@ After these two command, the folder will look something like this
 
 ![image](https://user-images.githubusercontent.com/44376091/62830812-2d457900-bc3f-11e9-9194-798dbb0f7890.png)
 
-The main file where will working with is stocks_spider.py.
+The main file where will working with is __stocks_spider.py.__
 
 ![image](https://user-images.githubusercontent.com/44376091/62830828-73024180-bc3f-11e9-86ce-2b4a4c54ff7a.png)
    #### :fast_forward:sef.companyList: The list of company we will get stock data from, you can change this with an import        from csv file
