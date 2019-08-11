@@ -6,7 +6,7 @@ There will be 2 main section for this project: [Scrapy](#Scrapy) and [Main API](
 
 ## Scrapy
 This is the document to set up the Scrapy Spider to crawl stock data from [Yahoo Finance](https://finance.yahoo.com/). 
-There will be 2 set up environment Step: Set up the [database](##Install and set up InfluxDB) and [Scrapy](#Scrapy)
+There will be 2 set up environment Step: Set up the [database](##Install and set up InfluxDB) and [Scrapy](#Install and set up InfluxDB)
 
 ### Install and set up InfluxDB
 In this project, I will use [InfluxDB](https://www.influxdata.com/), an open source time series database
