@@ -4,7 +4,7 @@ The API for the Stock Simulator Game https://HowTheMarketworks.com. My attempt t
 
 There will be 2 main section for this project: [Scrapy](#Scrapy) and [Main API](#API)
 
-## Scrapy
+# Scrapy
 This is the document to set up the Scrapy Spider to crawl stock data from [Yahoo Finance](https://finance.yahoo.com/). 
 There will be 2 set up environment Step: __Install and set up InfluxDB__  and __Install and Set up Scrapy__ 
 ### :arrow_forward: Install and set up InfluxDB
@@ -69,7 +69,7 @@ The data will be written in my InfluxDB
 
 ![image](https://user-images.githubusercontent.com/44376091/62830978-08063a00-bc42-11e9-94bc-208639976d00.png)
 
-###### Using Crontab
+##### Using Crontab
 Now we can employ Crontab to get our scrapy spider run every 1 minute, which close to the time Yahoo Finance updates the stock value
 
     crontab -e
@@ -86,4 +86,4 @@ Now the stock values will be update every 1min, after a while you can check the 
 
 
 
-## API
+# API
