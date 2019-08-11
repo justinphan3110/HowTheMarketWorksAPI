@@ -6,7 +6,7 @@ There will be 2 main section for this project: [Scrapy](#Scrapy) and [Main API](
 
 ## Scrapy
 This is the document to set up the Scrapy Spider to crawl stock data from [Yahoo Finance](https://finance.yahoo.com/). 
-There will be 2 set up environment Step: Set up the [database](#Install and set up InfluxDB) and [Python Scrapy](#Install and Set up Scrapy).
+There will be 2 set up environment Step: Set up the [database](##Install and set up InfluxDB) and [Scrapy](#Scrapy)
 
 ### Install and set up InfluxDB
 In this project, I will use [InfluxDB](https://www.influxdata.com/), an open source time series database
@@ -19,7 +19,7 @@ Add InfluxData repository
     sudo apt-get update && sudo apt-get install influxdb
     sudo service influxdb start
     
-Calling influx to check
+Calling `influx` to check
 
 ![image](https://user-images.githubusercontent.com/44376091/62831159-e5c1eb80-bc44-11e9-9720-1aae70912d33.png)
 
@@ -40,7 +40,7 @@ The main file where will working with is stocks_spider.py.
    #### :fast_forward:sef.companyList: The list of company we will get stock data from, you can change this with an import        from csv file
   #### :fast_forward:sef.name: Name of the spider
   #### :fast_forward:sef.start_url: The link our spider will start with and link with every company's page for each crawl
-  #### :fast_forward:sef.parse(): The main function will be call
+  #### :fast_forward:sef.parse(): The main function will be called
 
 
 With this spider, we will get the price and growth value of the stock from the HTML tags from [Yahoo Finance](https://finance.yahoo.com/). This is an example with [GOOGL](https://finance.yahoo.com/quote/GOOGL/). 
