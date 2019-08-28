@@ -87,6 +87,8 @@ Now the stock values will be update every 1min, after a while you can check the 
 
 
 # API
+### The API is created with [MechanicalSoups](https://mechanicalsoup.readthedocs.io/en/stable/tutorial.html)    
+    pip install MechanicalSoup
 
 # Author
   [Long Phan](https://github.com/justinphan3110)
